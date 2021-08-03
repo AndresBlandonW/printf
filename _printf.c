@@ -13,6 +13,7 @@ int _printf(const char *format, ...)
 char *str;
 va_list pa;
 unsigned int len, i;
+int ispa = 0;
 
 if (format == NULL)
 return (0);
@@ -22,41 +23,39 @@ for (i = 0; *(format + i) != '\0'; i++)
 {
 if (format[i] == '%')
 {
-len += 1;
-if (format[i + 1] == 'c')
+ispa = 1;
+}
+else if (ispa == 1)
+{
+ispa = 0;
+if (format[i] == 'c')
 {
 print_c(va_arg(pa, int));
 len += 1;
-i += 1;
 }
-else if (format[i + 1] == 's')
+else if (format[i] == 's')
 {
 str = va_arg(pa, char *);
 len += print_s(str);
-i += 1;
 }
-else if (format[i + 1] == '%')
+else if (format[i] == '%')
 {
 _putchar('%');
 len += 1;
-i += 1;
 }
 else if (format[i + 1] == 'd')
 {
 len += print_d((long)(va_arg(pa, int)));
-i += 1;
 }
 else if (format[i + 1] == 'i')
 {
 len += print_d((long)(va_arg(pa, int)));
-i += 1;
 }
 else
 {
 _putchar('%');
-_putchar(format[i + 1]);
+_putchar(format[i]);
 len += 2;
-i += 1;
 }
 
 }
