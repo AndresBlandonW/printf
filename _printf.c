@@ -1,10 +1,6 @@
 #include "holberton.h"
 #include <stdio.h>
 
-int print_c(char ch);
-int print_s(char *str);
-int print_d(long int n);
-
 /**
 * _printf - printf function
 * @format: type of output
