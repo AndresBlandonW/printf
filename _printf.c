@@ -42,11 +42,18 @@ else if (format[i + 1] == 'i')
 len += print_d((long)(va_arg(pa, int)));
 i += 1;
 }
+else if (format[i + 1] == '%')
+{
+_putchar('%');
+len += 1;
+i += 1;
+}
 else
 {
 _putchar('%');
-_putchar(format[i]);
+_putchar(format[i + 1]);
 len += 2;
+i += 1;
 }
 
 }
