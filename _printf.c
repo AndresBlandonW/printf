@@ -15,7 +15,7 @@ va_list pa;
 unsigned int len, i;
 
 va_start(pa, format);
-for (i = 0; format[i]; i++)
+for (i = 0; *(format + i) != '\0'; i++)
 {
 if (format[i] == '%')
 {
