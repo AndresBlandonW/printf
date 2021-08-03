@@ -126,5 +126,4 @@ return (len);
 int print_c(char ch)
 {
 _putchar(ch);
-return (1);
 }
