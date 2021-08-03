@@ -1,4 +1,3 @@
-#include <stdarg.h>
 #include "holberton.h"
 #include <stdio.h>
 
@@ -30,7 +29,7 @@ else if (ispa == 1)
 ispa = 0;
 if (format[i] == 'c')
 {
-print_c(va_arg(pa, int));
+_putchar(va_arg(pa, int));
 len += 1;
 }
 else if (format[i] == 's')
@@ -42,11 +41,11 @@ else if (format[i] == '%')
 _putchar('%');
 len += 1;
 }
-else if (format[i + 1] == 'd')
+else if (format[i] == 'd')
 {
 len += print_d((long)(va_arg(pa, int)));
 }
-else if (format[i + 1] == 'i')
+else if (format[i] == 'i')
 {
 len += print_d((long)(va_arg(pa, int)));
 }
@@ -115,15 +114,4 @@ len += 1;
 else
 return (print_s("(null)"));
 return (len);
-}
-
-/**
-* print_c - print character
-* @ch: data
-* Return: data
-*/
-
-int print_c(char ch)
-{
-_putchar(ch);
 }
