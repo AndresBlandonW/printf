@@ -1,0 +1,33 @@
+man_3_printf
+
+_printf - Man page
+
+NAME
+	_printf - format and print data
+
+SYNOPSIS
+	#include "holberton.h"
+	#include <stdio.h>
+	#include <stdarg.h>
+	int _printf(const char *format, ...);
+    
+DESCRIPTION
+	Print Argms with specific format, or execute according to the type of option
+	- %c type character
+	- %d or %i signed decimal integer
+	- %s type string
+	- %% a single %
+
+FORMAT
+	_printf(the content to print , followed by argument that is introduced by the % (c , d , s , i) , followed by a comma with the variables)
+
+EXAMPLE
+	To print a data stored in a variable next to a text:
+	name = "Andres";
+	_printf("Hi my name is %c", name);
+
+EXIT VALUES
+	if work, this function returns the number of characters printed.
+
+AUTHOR
+	Programming by Andres Felipe Blandon.
