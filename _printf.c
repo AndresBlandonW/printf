@@ -16,11 +16,7 @@ int _printf(const char *format, ...)
 
 char *str;
 va_list pa;
-unsigned int len, i, x;
-int val;
-unsigned int val2;
-unsigned int size2 = 0;
-
+unsigned int len, i;
 
 va_start(pa, format);
 for (i = 0; format[i]; i++)
