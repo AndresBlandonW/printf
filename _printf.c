@@ -1,3 +1,4 @@
+#include <stdarg.h>
 #include "holberton.h"
 #include <stdio.h>
 
@@ -10,9 +11,8 @@
 int _printf(const char *format, ...)
 {
 
-char *str;
 va_list pa;
-unsigned int len, i;
+int i, len = 0;
 int ispa = 0;
 
 if (format == NULL)
@@ -35,8 +35,7 @@ len += 1;
 }
 else if (format[i] == 's')
 {
-str = va_arg(pa, char *);
-len += print_s(str);
+len += print_s(va_arg(pa, char *));
 }
 else if (format[i] == '%')
 {
