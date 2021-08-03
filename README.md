@@ -1,2 +1,1 @@
-# printf
-my own printf function
+# printf my own printf function
