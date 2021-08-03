@@ -14,6 +14,9 @@ char *str;
 va_list pa;
 unsigned int len, i;
 
+if (format == NULL)
+return (0);
+
 va_start(pa, format);
 for (i = 0; *(format + i) != '\0'; i++)
 {
@@ -22,14 +25,20 @@ if (format[i] == '%')
 len += 1;
 if (format[i + 1] == 'c')
 {
-char ch = (char)va_arg(pa, int);
-len += print_c(ch);
+print_c(va_arg(pa, int));
+len += 1;
 i += 1;
 }
 else if (format[i + 1] == 's')
 {
 str = va_arg(pa, char *);
 len += print_s(str);
+i += 1;
+}
+else if (format[i + 1] == '%')
+{
+_putchar('%');
+len += 1;
 i += 1;
 }
 else if (format[i + 1] == 'd')
@@ -40,12 +49,6 @@ i += 1;
 else if (format[i + 1] == 'i')
 {
 len += print_d((long)(va_arg(pa, int)));
-i += 1;
-}
-else if (format[i + 1] == '%')
-{
-_putchar('%');
-len += 1;
 i += 1;
 }
 else
@@ -103,16 +106,17 @@ return (len);
 
 int print_s(char *str)
 {
-int count = 0;
+int len = 0;
 
-if (str == NULL)
-str = "(null)";
-else
-for (count = 0; str[count]; count++)
+if (str != NULL)
+while (*str)
 {
-_putchar(str[count]);
+_putchar(*str++);
+len += 1;
 }
-return (count);
+else
+return (print_s("(null)"));
+return (len);
 }
 
 /**
